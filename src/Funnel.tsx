@@ -17,9 +17,9 @@ export interface StepProps<Steps extends ISteps> {
 }
 
 export const Funnel = <Steps extends ISteps>({ steps, step, children }: FunnelProps<Steps>) => {
-  const validChildren: ReactElement<StepProps<Steps>>[] = toArray(children)
-    .filter(isValidElement)
-    .filter((i) => steps.includes((i.props as Partial<StepProps<Steps>>).name ?? ""));
+  const validChildren = toArray(children)
+    .filter(isValidElement<StepProps<Steps>>)
+    .filter((i) => steps.includes(i.props.name ?? ""));
 
   const targetStep = validChildren.find((child) => child.props.name === step);
 
