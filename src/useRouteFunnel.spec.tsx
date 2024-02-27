@@ -1,5 +1,5 @@
 import { useRouteFunnel } from "./useRouteFunnel";
-import { beforeEach, expect, test, describe, it } from "vitest";
+import { beforeEach, expect, describe, it } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import memoryRouter from "next-router-mock";
