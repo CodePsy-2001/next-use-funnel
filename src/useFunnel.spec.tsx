@@ -13,13 +13,13 @@ beforeEach(() => {
 });
 
 const STEPS = ["name", "age"] as const;
-const getRemoteState = () => JSON.parse(safeSessionStorage.get("funnel-state__/"));
+const getRemoteState = () => JSON.parse(safeSessionStorage.get("funnel-state__/") ?? "{}");
 
 describe("useFunnel의 정상 동작", () => {
   it("`.withState()` 를 붙이거나 떼어서 사용할 수 있다", () => {
     function TestPage() {
-      const [Funnel1, setStep1] = useFunnel(STEPS, { initialStep: "name" });
-      const [Funnel2, state2, setState2, clear2] = useFunnel(STEPS, {
+      const _ = useFunnel(STEPS, { initialStep: "name" });
+      const __ = useFunnel(STEPS, {
         initialStep: "age",
       }).withState({
         name: "John",
@@ -35,7 +35,7 @@ describe("useFunnel의 정상 동작", () => {
 
   it("퍼널의 초기 상태를 설정할 수 있다.", () => {
     function TestPage() {
-      const [Funnel, state, setState] = useFunnel(STEPS, { initialStep: "name" }).withState({
+      const [_, state, __] = useFunnel(STEPS, { initialStep: "name" }).withState({
         age: 20,
       });
       return <main>my age: {state.age}</main>;
@@ -59,12 +59,12 @@ describe("useFunnel의 정상 동작", () => {
           <Funnel.Step name="시작">
             <시작
               onConfirm={() =>
-                setState((prev) => ({ ...prev, count: prev.count + 1, step: "다음" }))
+                setState((prev) => ({ ...prev, count: (prev.count ?? 0) + 1, step: "다음" }))
               }
             />
           </Funnel.Step>
           <Funnel.Step name="다음">
-            <다음 requiredProp={state.count} />
+            <다음 requiredProp={state.count ?? 0} />
           </Funnel.Step>
         </Funnel>
       );
