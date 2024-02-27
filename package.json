@@ -1,5 +1,16 @@
 {
   "name": "next-use-funnel",
+  "description": "@toss/use-funnel in latest Next.js App Router",
+  "repository": "https://github.com/CodePsy-2001/next-use-funnel",
+  "keywords": [
+    "next",
+    "next.js",
+    "react",
+    "funnel",
+    "use-funnel",
+    "router",
+    "app-router"
+  ],
   "author": "CodePsy-2001",
   "version": "0.1.0",
   "license": "MIT",
