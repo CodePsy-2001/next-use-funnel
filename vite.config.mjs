@@ -5,23 +5,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: "src/index.ts",
-      // entry: "src/*.ts",
+      formats: ["es", "cjs"],
+      fileName: (format, entryName) => `${entryName}.${format === "es" ? "m" : ""}js`,
     },
     rollupOptions: {
-      // input: {
-      //   index: "src/index.ts",
-      //   // minusDays: "src/minusDays.ts",
-      // },
-      output: [
-        {
-          format: "esm",
-          entryFileNames: "[name].mjs",
-        },
-        {
-          format: "cjs",
-          entryFileNames: "[name].js",
-        },
-      ],
+      external: ["next/navigation", "react", "react-dom", "swr"],
     },
   },
   plugins: [dts()],
