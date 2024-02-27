@@ -1,4 +1,3 @@
-"use client";
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
 import { safeSessionStorage } from "@toss/storage";
