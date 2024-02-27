@@ -22,16 +22,19 @@ export const withState =
     const state = !_state || !_state?.step ? defaultValue : _state;
 
     // 항상 storage.set -> mutate -> setStep 순서로 호출해야 함
-    const setState = useCallback((action: Action<FState>) => {
-      const nextState = typeof action === "function" ? action(state) : action;
-      storage
-        .set(nextState)
-        .then(() => mutate(nextState, false))
-        .then(() => setStep(nextState.step));
-    }, []);
+    const setState = useCallback(
+      (action: Action<FState>) => {
+        const nextState = typeof action === "function" ? action(state) : action;
+        storage
+          .set(nextState)
+          .then(() => mutate(nextState, false))
+          .then(() => setStep(nextState.step));
+      },
+      [mutate, state, storage],
+    );
     const clear = useCallback(() => {
       storage.set({} as FState).then(() => mutate({} as FState, false));
-    }, []);
+    }, [mutate, storage]);
 
     return [Funnel, state, setState, clear] as const as [
       RouteFunnel<Steps> & { Step: RouteFunnelStep<Steps> },
