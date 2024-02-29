@@ -16,6 +16,14 @@ export type RouteFunnelStep<Steps extends ISteps> = (props: _StepProps<Steps>) =
 
 export interface RouteFunnelOptions<Steps extends ISteps> {
   initialStep?: Steps[number];
+  stepQueryKey?: string;
+  onStepChange?: (step: Steps[number]) => void;
+}
+
+interface SetStepOptions {
+  stepChangeType?: "push" | "replace";
+  preserveQuery?: boolean;
+  query?: Record<string, string | string[]>;
 }
 
 export const DEFAULT_STEP_KEY = "funnel-step";
@@ -24,17 +32,23 @@ export const useRouteFunnel = <Steps extends ISteps>(
   steps: Steps,
   options: RouteFunnelOptions<Steps> = {},
 ) => {
-  const { initialStep } = options;
+  const { initialStep, stepQueryKey = DEFAULT_STEP_KEY, onStepChange } = options;
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const step = searchParams.get(DEFAULT_STEP_KEY) ?? initialStep;
   assert(step, `현재 step을 찾을 수 없습니다. URL에 step을 적거나, initialStep을 지정해주세요.`);
 
-  const setStep = (step: Steps[number]) => {
-    const sp = new URLSearchParams(searchParams);
-    sp.set(DEFAULT_STEP_KEY, step);
-    router.push(`?${sp}`);
+  const setStep = (step: Steps[number], options: SetStepOptions = {}) => {
+    const { stepChangeType = "push", preserveQuery = true, query = {} } = options;
+    const sp = preserveQuery ? new URLSearchParams(searchParams) : new URLSearchParams();
+    sp.set(stepQueryKey, step);
+    Object.entries(query ?? {}).forEach(([key, value]) => {
+      if (Array.isArray(value)) value.forEach((v) => sp.append(key, v));
+      else sp.set(key, value);
+    });
+    onStepChange?.(step);
+    return stepChangeType === "push" ? router.push(`?${sp}`) : router.replace(`?${sp}`);
   };
 
   const Funnel = useMemo(() => {
