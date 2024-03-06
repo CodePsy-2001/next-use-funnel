@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "outDir": "dist",
-    "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "lib": ["dom", "dom.iterable", "ESNext"],
     "skipLibCheck": true,
     "strict": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "noErrorTruncation": true,
     "jsx": "react-jsxdev"
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["node_modules"]
 }
