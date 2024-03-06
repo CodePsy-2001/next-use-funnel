@@ -82,7 +82,7 @@ describe("useFunnel의 정상 동작", () => {
 
     render(<TestPage />);
 
-    expect(getRemoteState()).toEqual(null);
+    expect(getRemoteState()).toEqual({});
 
     const button = screen.getByRole("button", { name: "확인" });
     await user.click(button);
