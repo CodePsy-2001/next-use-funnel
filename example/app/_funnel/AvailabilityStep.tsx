@@ -9,10 +9,10 @@ import arm from "./_resources/arm.png";
 import shoe from "./_resources/shoe.png";
 import barber from "./_resources/barber.png";
 import { ChevronRightIcon } from "@heroicons/react/16/solid";
-import { sendGTMEvent } from "@next/third-parties/google";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export function AvailabilityStep({ next }: { defaultValue?: string; next: () => void }) {
-  const sendSelfEmployedEvent = () => sendGTMEvent({ event: "funnel_step", step: "self_employed" });
+  const sendSelfEmployedEvent = () => sendGAEvent({ event: "funnel_step", step: "self_employed" });
 
   return (
     <Scaffold

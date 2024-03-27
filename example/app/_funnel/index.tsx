@@ -4,7 +4,7 @@ import { AvailabilityStep } from "./AvailabilityStep";
 import { FormStep } from "./FormStep";
 import { EndStep } from "./EndStep";
 import useFunnel from "next-use-funnel";
-import { sendGTMEvent } from "@next/third-parties/google";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export { StartStep, AvailabilityStep };
 
@@ -16,7 +16,7 @@ type FunnelState = {
 export default function ExampleFunnel() {
   const [Funnel, state, setState] = useFunnel(["start", "availability", "form", "end"] as const, {
     initialStep: "start",
-    onStepChange: (step) => sendGTMEvent({ event: "funnel_step", step }),
+    onStepChange: (step) => sendGAEvent({ event: "funnel_step", step }),
   }).withState<FunnelState>({});
 
   return (
