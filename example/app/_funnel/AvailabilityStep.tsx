@@ -3,11 +3,11 @@ import { Scaffold } from "@/components/Scaffold";
 import { AppAction, BackButton } from "@/components/AppAction";
 import { Legend } from "@/components/form";
 import Image, { type ImageProps } from "next/image";
-import sushi from "./sushi.png";
-import graduationCap from "./graduation-cap.png";
-import arm from "./arm.png";
-import shoe from "./shoe.png";
-import barber from "./barber.png";
+import sushi from "./_resources/sushi.png";
+import graduationCap from "./_resources/graduation-cap.png";
+import arm from "./_resources/arm.png";
+import shoe from "./_resources/shoe.png";
+import barber from "./_resources/barber.png";
 import { ChevronRightIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 
