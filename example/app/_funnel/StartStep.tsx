@@ -3,7 +3,7 @@ import { Scaffold } from "@/components/Scaffold";
 import { AppAction, BackButton } from "@/components/AppAction";
 import { Legend, Info } from "@/components/form";
 import Image from "next/image";
-import CardGrabHand from "./card-grab-hand.png";
+import CardGrabHand from "./_resources/card-grab-hand.png";
 
 export function StartStep({ next }: { next: () => void }) {
   return (

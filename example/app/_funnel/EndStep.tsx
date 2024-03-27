@@ -1,6 +1,6 @@
 import { Scaffold } from "@/components/Scaffold";
 import { AppAction, BackButton } from "@/components/AppAction";
-import smile from "./smile.png";
+import smile from "./_resources/smile.png";
 import Image from "next/image";
 
 export function EndStep() {
