@@ -4,8 +4,8 @@ import "./globals.css";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
-  title: "next-use-funnel Example",
-  description: "example for next-use-funnel",
+  title: "분할결제 신청하기 | 캔디페이",
+  description: "이제 간편결제도 카드 나눠서 결제해요",
 };
 
 export const viewport: Viewport = {
