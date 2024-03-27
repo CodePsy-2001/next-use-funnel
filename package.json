@@ -14,9 +14,12 @@
     "router",
     "app-router"
   ],
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "packageManager": "yarn@4.1.1",
+  "workspaces": [
+    "example"
+  ],
   "sideEffects": false,
   "files": [
     "dist",
@@ -44,7 +47,7 @@
     "test": "vitest",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write .",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "vite build"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.4",
