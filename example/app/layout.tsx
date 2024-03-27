@@ -2,6 +2,7 @@ import type { PropsWithChildren } from "react";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "분할결제 신청하기 | 캔디페이",
@@ -25,6 +26,7 @@ const tossFace = localFont({
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="G-38RPJB9ZTR" />
       <head>
         <link
           rel="stylesheet"
