@@ -4,6 +4,13 @@ import smile from "./_resources/smile.png";
 import Image from "next/image";
 
 export function EndStep() {
+  const share = () =>
+    window.navigator.share({
+      url: window.location.pathname + "?utm_source=share",
+      title: "분할결제 서비스 론칭",
+      text: "부족한 카드실적 과소비없이 나누어 결제해요",
+    });
+
   return (
     <Scaffold
       topBar={<AppAction backButton={<BackButton />} />}
@@ -23,14 +30,9 @@ export function EndStep() {
       }
       bottomBar={
         <section id="cta">
-          <div className="grid grid-cols-2 gap-2.5">
-            <button type="button" className="btn-alt clickarea">
-              닫기
-            </button>
-            <button type="button" className="btn-cta clickarea">
-              공유하기
-            </button>
-          </div>
+          <button type="button" onClick={share} className="btn-alt clickarea">
+            공유하기
+          </button>
         </section>
       }
     />

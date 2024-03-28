@@ -5,10 +5,11 @@ import { FormStep } from "./FormStep";
 import { EndStep } from "./EndStep";
 import useFunnel from "next-use-funnel";
 import { sendGAEvent } from "@next/third-parties/google";
+import { submit } from "./actions";
 
 export { StartStep, AvailabilityStep };
 
-type FunnelState = {
+export type FunnelState = {
   name: string;
   phone: string;
 };
@@ -33,7 +34,11 @@ export default function ExampleFunnel() {
       <Funnel.Step name="form">
         <FormStep
           defaultValues={state}
-          next={({ phone, name }) => setState((prev) => ({ ...prev, phone, name, step: "end" }))}
+          next={async ({ phone, name }) => {
+            if (state.phone !== phone || state.name !== name) await submit({ phone, name });
+            return setState((prev) => ({ ...prev, phone, name, step: "end" }));
+          }}
+          pass={() => setState((prev) => ({ ...prev, step: "end" }))}
         />
       </Funnel.Step>
       <Funnel.Step name="end">

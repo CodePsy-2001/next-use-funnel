@@ -17,7 +17,7 @@ export function Scaffold({ content, topBar, bottomBar }: ScaffoldProps) {
         {topBar}
       </div>
       {content}
-      <div className="sticky bottom-0 z-[100]">{bottomBar}</div>
+      <div className="sticky bottom-0 z-10">{bottomBar}</div>
     </div>
   );
 }

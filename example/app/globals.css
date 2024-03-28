@@ -115,42 +115,45 @@
 
 
 @layer components {
-    button[aria-busy="true"] {
-        @apply cursor-wait pointer-events-none opacity-50;
-    }
-
     a.btn-cta,
     button.btn-cta {
         @apply block text-center w-full py-3.5 text-lg font-medium text-white transition rounded-2xl bg-blue-600;
-    }
-    form:invalid button.btn-cta,
-    button.btn-cta:invalid,
-    button.btn-cta:disabled{
-        @apply bg-gray-400/70 cursor-default;
+
+        &:invalid, &:disabled {
+            @apply bg-gray-400/70 cursor-default;
+        }
+
+        &[aria-busy="true"] {
+            @apply cursor-wait pointer-events-none opacity-50;
+        }
     }
 
     a.btn-alt,
     button.btn-alt {
         @apply block text-center w-full py-3.5 text-lg font-medium text-blue-600 transition rounded-2xl bg-white border border-blue-600;
-    }
-    form:invalid button.btn-alt,
-    button.btn-alt:invalid,
-    button.btn-alt:disabled{
-        @apply bg-gray-200 border-gray-400/70 cursor-default text-gray-400;
+
+        &:invalid, &:disabled {
+            @apply bg-gray-200 border-gray-400/70 cursor-default text-gray-400;
+        }
     }
 
     section#cta,
-    footer#cta {
-        @apply flex flex-col gap-4 items-stretch justify-center sticky bottom-0 w-full p-4 mt-auto from-transparent to-white to-15% bg-gradient-to-b;
-    }
+    footer#cta,
+    section.cta,
+    footer.cta {
+        @apply aria-disabled:hidden flex flex-col gap-4 items-stretch justify-center sticky bottom-0 w-full p-4 mt-auto from-transparent to-white to-15% bg-gradient-to-b;
 
-    section#cta .addition,
-    footer#cta .addition {
-        @apply flex items-center justify-center text-blue-500;
+        .addition {
+            @apply flex items-center justify-center text-blue-500;
+        }
     }
 
     hr.divider {
         @apply w-full h-3 bg-gray-200 mb-6;
+    }
+
+    section.sheet {
+        @apply fixed inset-x-0 z-10 bottom-0 bg-white rounded-t-2xl shadow-lg;
     }
 }
 

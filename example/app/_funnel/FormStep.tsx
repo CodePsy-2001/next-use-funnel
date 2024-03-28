@@ -4,7 +4,7 @@ import { Legend } from "@/components/form";
 import { ChevronRightIcon } from "@heroicons/react/16/solid";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-export interface FormState {
+export interface FormValues {
   phone: string;
   name: string;
 }
@@ -12,16 +12,18 @@ export interface FormState {
 export function FormStep({
   defaultValues = {},
   next,
+  pass,
 }: {
-  defaultValues?: Partial<FormState>;
-  next: (values: FormState) => void;
+  defaultValues?: Partial<FormValues>;
+  next: (values: FormValues) => void;
+  pass: () => void;
 }) {
-  const { register, handleSubmit, formState } = useForm<FormState>({
+  const { register, handleSubmit, formState } = useForm<FormValues>({
     defaultValues,
   });
   const { isSubmitting, isValidating, isValid } = formState;
 
-  const onSubmit: SubmitHandler<FormState> = (values) => {
+  const onSubmit: SubmitHandler<FormValues> = (values) => {
     next(values);
   };
 
@@ -33,7 +35,7 @@ export function FormStep({
           <form id="form" onSubmit={handleSubmit(onSubmit)}>
             <Legend
               content="이름과 전화번호를\n알려주세요"
-              description="앱이 출시되면 알림을 보내드릴게요"
+              description="서비스가 출시되면 알림을 보내드릴게요"
             />
             <fieldset className="flex flex-col gap-6">
               <label className="flex flex-col gap-2">
@@ -64,10 +66,15 @@ export function FormStep({
         </main>
       }
       bottomBar={
-        <section id="cta">
-          <p className="addition">
+        <section
+          // role="group"
+          // aria-disabled={!isValid || isSubmitting || isValidating}
+          id="cta"
+          className="aria-disabled:hidden"
+        >
+          <button type="button" onClick={pass} className="block addition">
             알림을 받고 싶지 않아요 <ChevronRightIcon width={16} height={16} />
-          </p>
+          </button>
           <button
             aria-busy={isSubmitting || isValidating}
             disabled={!isValid || isSubmitting || isValidating}

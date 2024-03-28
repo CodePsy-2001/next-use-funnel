@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { GoogleTagManager } from "@next/third-parties/google";
+import ClientProvider from "@/app/_ClientProviders";
 
 export const metadata: Metadata = {
   title: "분할결제 신청하기 | 캔디페이",
@@ -35,7 +36,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
         />
       </head>
-      <body className={`${tossFace.variable} font-sans`}>{children}</body>
+      <body className={`${tossFace.variable} font-sans`}>
+        <ClientProvider>{children}</ClientProvider>
+      </body>
     </html>
   );
 }
