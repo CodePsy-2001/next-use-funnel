@@ -7,6 +7,9 @@ const config: Config = {
       sans: ["Pretendard", "-apple-system", "sans-serif"],
       "toss-face": ["var(--font-toss-face)", "Pretendard", "-apple-system", "sans-serif"],
     },
+    screens: {
+      tablet: "640px",
+    },
   },
   plugins: [],
 };

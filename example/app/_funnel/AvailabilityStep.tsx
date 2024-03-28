@@ -117,11 +117,8 @@ export const Category = ({
 );
 
 export const 사장님안내 = () => (
-  <div className="p-4">
-    <div className="flex justify-between">
-      <Legend content="사장님께 알려주세요" />
-      <div>X</div>
-    </div>
+  <div className="p-4 min-h-[50vh]">
+    <Legend content="사장님께 알려주세요" />
     <div>스마트폰, 공동인증서만 있으면 사장님도 가입 후 바로 결제할 수 있어요</div>
   </div>
 );

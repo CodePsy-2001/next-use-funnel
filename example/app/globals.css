@@ -10,21 +10,12 @@
         -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-        @apply text-gray-900 lining-nums;
+    html {
+        @apply bg-gray-100 text-gray-900;
     }
-}
 
-@layer base {
-    @media only screen and (min-width: 769px) {
-        html {
-            @apply bg-gray-50;
-        }
-        body {
-            @apply bg-white;
-            max-width: 375px;
-            margin: 0 auto;
-        }
+    body {
+        @apply bg-white text-gray-900 lining-nums tablet:max-w-[375px] m-auto;
     }
 }
 
@@ -150,10 +141,6 @@
 
     hr.divider {
         @apply w-full h-3 bg-gray-200 mb-6;
-    }
-
-    section.sheet {
-        @apply fixed inset-x-0 z-10 bottom-0 bg-white rounded-t-2xl shadow-lg;
     }
 }
 
