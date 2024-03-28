@@ -1,5 +1,5 @@
 "use client";
-import { cloneElement, PropsWithChildren, ReactElement } from "react";
+import { ReactElement } from "react";
 
 export interface OverlayProps {
   isOpen: boolean;
@@ -10,19 +10,6 @@ export interface OverlayProps {
 export const Backdrop = ({ close }: { close: () => void }) => (
   <div onClick={close} className="fixed z-10 inset-0 bg-black bg-opacity-50" />
 );
-
-// eslint-disable-next-line react/display-name
-export const withBackdrop = (ovProps: OverlayProps) => (component: ReactElement<OverlayProps>) => {
-  const { isOpen, close } = ovProps;
-  const injected = cloneElement(component, { ...ovProps });
-
-  return (
-    <>
-      {isOpen && <Backdrop close={close} />}
-      {isOpen && injected}
-    </>
-  );
-};
 
 interface SheetProps extends OverlayProps {
   className?: string;
