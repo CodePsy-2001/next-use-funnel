@@ -27,7 +27,7 @@ export function StartStep({ next }: { next: () => void }) {
       bottomBar={
         <section id="cta">
           <button type="button" onClick={next} className="btn-cta clickarea">
-            다음
+            분할결제 신청하기
           </button>
         </section>
       }
