@@ -38,7 +38,7 @@ export function AvailabilityStep({ next }: { defaultValue?: string; next: () => 
       content={
         <main className="flex flex-col">
           <section className="p-4">
-            <Legend content="사용 가능한 매장을\n알려드려요" />
+            <Legend content="분할 결제가\n필요한 순간" />
             <div className="grid grid-cols-2 gap-x-3 gap-y-12">
               <Category
                 src={sushi}
@@ -74,7 +74,7 @@ export function AvailabilityStep({ next }: { defaultValue?: string; next: () => 
           </section>
           <div className="px-4 pt-4">
             <button type="button" onClick={openSelfEmployedSheet} className="btn-alt clickarea">
-              원하는 매장이 없나요?
+              사장님께 알려주세요
             </button>
           </div>
         </main>
@@ -110,7 +110,7 @@ export const Category = ({
     <div>
       <p className="text-lg font-bold">{name}</p>
       <button type="button" onClick={onClick} className="flex text-blue-500 items-center">
-        카드 나눠 결제하기 <ChevronRightIcon className="w-4 h-4" />
+        선택 <ChevronRightIcon className="w-4 h-4" />
       </button>
     </div>
   </div>
