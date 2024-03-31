@@ -15,7 +15,7 @@ export const Legend = ({
   <div className="flex flex-col gap-8 mb-12">
     {icon}
     <div className="flex flex-col gap-2.5">
-      <h1 className={`${title ? "text-3xl" : "text-2xl"} font-bold`}>
+      <h1 className={`${title ? "text-3xl" : "text-2xl"} tracking-tight font-bold`}>
         {convertNewlineToJSX(content)}
       </h1>
       {description && (

@@ -13,13 +13,22 @@ export function StartStep({ next }: { next: () => void }) {
         <main className="p-5 flex flex-col">
           <Legend
             title
-            icon={<Image width={80} height={80} className="" src={CardGrabHand} alt="image" />}
-            content="분할 결제"
-            description="이제 간편결제도 여러 카드로 나누어 결제해요."
+            icon={
+              <Image
+                unoptimized
+                className="rounded-xl"
+                width={120}
+                height={120}
+                src={CardGrabHand}
+                alt="image"
+              />
+            }
+            content="카드 나눠 결제하기"
+            description="분할결제로 과소비 없이 실적 채워요"
           />
           <div className="flex flex-col gap-10">
-            <Info icon="🍽" description="어느 곳이든 사용할 수 있어요" />
-            <Info icon="💳" description="어떤 카드든 사용할 수 있어요" />
+            <Info icon="🍽" description="어느 곳이든 할 수 있어요" />
+            <Info icon="💳" description="모든 카드로 할 수 있어요" />
             <Info icon="📱" description="기종 상관없이 QR로 결제해요" />
           </div>
         </main>

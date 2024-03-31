@@ -1,6 +1,6 @@
 import { Scaffold } from "@/components/Scaffold";
 import { AppAction, BackButton } from "@/components/AppAction";
-import smile from "./_resources/smile.png";
+import moneyWithWings from "./_resources/money-with-wings.png";
 import Image from "next/image";
 
 export function EndStep() {
@@ -18,7 +18,7 @@ export function EndStep() {
         <main className="p-4 flex flex-col">
           <div className="flex items-center grow justify-center">
             <div className="flex flex-col gap-4 items-center">
-              <Image src={smile} alt="smile" width={120} height={120} />
+              <Image src={moneyWithWings} alt="smile" width={120} height={120} />
               <h1 className="text-2xl font-bold text-center">
                 분할결제 소식을
                 <br />
@@ -30,7 +30,7 @@ export function EndStep() {
       }
       bottomBar={
         <section id="cta">
-          <button type="button" onClick={share} className="btn-alt clickarea">
+          <button type="button" onClick={share} className="btn-cta clickarea">
             공유하기
           </button>
         </section>
