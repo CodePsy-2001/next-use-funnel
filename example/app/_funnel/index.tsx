@@ -15,7 +15,7 @@ export type FunnelState = {
 };
 
 export default function ExampleFunnel() {
-  const [Funnel, state, setState] = useFunnel(["start", "availability", "form", "end"] as const, {
+  const [Funnel, state, setState] = useFunnel(["start", "form", "availability", "end"] as const, {
     initialStep: "start",
     onStepChange: (step) => sendGAEvent({ event: "funnel_step", step }),
   }).withState<FunnelState>({});
@@ -23,22 +23,22 @@ export default function ExampleFunnel() {
   return (
     <Funnel>
       <Funnel.Step name="start">
-        <StartStep next={() => setState({ step: "availability" })} />
-      </Funnel.Step>
-      <Funnel.Step name="availability">
-        <AvailabilityStep
-          defaultValue={state.phone}
-          next={() => setState((prev) => ({ ...prev, step: "form" }))}
-        />
+        <StartStep next={() => setState({ step: "form" })} />
       </Funnel.Step>
       <Funnel.Step name="form">
         <FormStep
           defaultValues={state}
           next={async ({ phone, name }) => {
             if (state.phone !== phone || state.name !== name) await submit({ phone, name });
-            return setState((prev) => ({ ...prev, phone, name, step: "end" }));
+            return setState((prev) => ({ ...prev, phone, name, step: "availability" }));
           }}
-          pass={() => setState((prev) => ({ ...prev, step: "end" }))}
+          pass={() => setState((prev) => ({ ...prev, step: "availability" }))}
+        />
+      </Funnel.Step>
+      <Funnel.Step name="availability">
+        <AvailabilityStep
+          defaultValue={state.phone}
+          next={() => setState((prev) => ({ ...prev, step: "end" }))}
         />
       </Funnel.Step>
       <Funnel.Step name="end">
