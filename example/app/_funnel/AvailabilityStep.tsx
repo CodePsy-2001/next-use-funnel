@@ -30,7 +30,7 @@ export function AvailabilityStep({ next }: { defaultValue?: string; next: () => 
             <div className="mb-4">
               <strong>스마트폰, 공동인증서</strong>만 있으면
               <br />
-              사장님도 가입 후 바로 결제할 수 있어요
+              사장님 가입 후 <strong className="text-blue-500">바로 결제</strong>할 수 있어요
             </div>
             <div className="flex items-center justify-center">
               <Image src={bakerWoman} width={256} height={256} alt="bakerWomen" />
@@ -104,7 +104,7 @@ export function AvailabilityStep({ next }: { defaultValue?: string; next: () => 
           </section>
           <div className="px-4 pt-4 mt-8">
             <button type="button" onClick={openSelfEmployedSheet} className="btn-alt clickarea">
-              어떤 매장에서 가능한가요?
+              어떤 매장에서 할 수 있나요?
             </button>
           </div>
         </main>
