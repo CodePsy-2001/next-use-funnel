@@ -8,10 +8,23 @@ import ClientProvider from "@/app/_ClientProviders";
 export const metadata: Metadata = {
   title: "분할결제 신청하기 | 캔디페이",
   description: "이제 간편결제도 카드 나눠서 결제해요",
+  appleWebApp: {
+    capable: true,
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#5B7EF3",
+  colorScheme: "light",
+  themeColor: [
+    {
+      media: "(prefers-color-scheme: light)",
+      color: "white",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: "black",
+    },
+  ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
