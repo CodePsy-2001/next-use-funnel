@@ -2,15 +2,9 @@ import { Scaffold } from "@/components/Scaffold";
 import { AppAction, BackButton } from "@/components/AppAction";
 import moneyWithWings from "./_resources/money-with-wings.png";
 import Image from "next/image";
+import { share } from "@/utils/share";
 
 export function EndStep() {
-  const share = () =>
-    window.navigator.share({
-      url: window.location.pathname + "?utm_source=share",
-      title: "분할결제 서비스 론칭",
-      text: "부족한 카드실적 과소비없이 나누어 결제해요",
-    });
-
   return (
     <Scaffold
       topBar={<AppAction backButton={<BackButton />} />}
@@ -30,7 +24,21 @@ export function EndStep() {
       }
       bottomBar={
         <section id="cta">
-          <button type="button" onClick={share} className="btn-cta clickarea">
+          <button
+            type="button"
+            onClick={() =>
+              share({
+                title: "카드 나눠 결제하기",
+                text: "분할결제로 과소비 없이 실적 채워요. 앱 설치만 하면 사장님, 손님 모두 바로 결제 가능해요.",
+                url: (() => {
+                  const url = new URL(window.location.href);
+                  url.search = "?utm_source=share";
+                  return url;
+                })(),
+              })
+            }
+            className="btn-cta clickarea"
+          >
             공유하기
           </button>
         </section>

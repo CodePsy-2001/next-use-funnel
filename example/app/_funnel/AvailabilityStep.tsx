@@ -14,6 +14,7 @@ import { ChevronRightIcon } from "@heroicons/react/16/solid";
 import { sendGAEvent } from "@next/third-parties/google";
 import { useOverlay } from "@toss/use-overlay";
 import { Sheet } from "@/components/with-overlay";
+import { share } from "@/utils/share";
 
 export function AvailabilityStep({ next }: { defaultValue?: string; next: () => void }) {
   const overlay = useOverlay();
@@ -41,10 +42,14 @@ export function AvailabilityStep({ next }: { defaultValue?: string; next: () => 
           <button
             type="button"
             onClick={() =>
-              window.navigator.share({
+              share({
                 title: "카드 나눠 결제하기",
-                text: "카드 나눠 결제하기. 분할결제로 과소비 없이 실적 채워요. 앱 설치만 하면 사장님, 손님 모두 바로 결제 가능해요.",
-                url: window.location.pathname,
+                text: "분할결제로 과소비 없이 실적 채워요. 앱 설치만 하면 사장님, 손님 모두 바로 결제 가능해요.",
+                url: (() => {
+                  const url = new URL(window.location.href);
+                  url.search = "?utm_source=share";
+                  return url;
+                })(),
               })
             }
             className="btn-cta"
