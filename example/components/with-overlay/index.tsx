@@ -33,6 +33,7 @@ export const Sheet = ({ className, handle, content, cta, isOpen, close }: SheetP
             <button
               type="button"
               className="w-1/4 h-1.5 rounded-full bg-gray-400"
+              onTouchStart={close}
               onClick={close}
             />
           </div>
