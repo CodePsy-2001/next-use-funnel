@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 export interface FormValues {
   phone: string;
   name: string;
+  sajangnim: boolean;
 }
 
 export function FormStep({
@@ -45,7 +46,7 @@ export function FormStep({
                   {...register("name", { required: true })}
                   defaultValue={defaultValues.name}
                   placeholder="이름"
-                  className="bg-gray-100 focus:bg-[#E4ECF9] outline-none text-gray-900 border border-gray-200 rounded-xl p-3"
+                  className="bg-gray-100 focus:bg-[#E4ECF9] outline-none border border-gray-200 rounded-xl p-3"
                 />
               </label>
               <label className="flex flex-col gap-2">
@@ -58,7 +59,16 @@ export function FormStep({
                   })}
                   defaultValue={defaultValues.phone}
                   placeholder="휴대폰 번호"
-                  className="bg-gray-100 focus:bg-[#E4ECF9] outline-none text-gray-900 border border-gray-200 rounded-xl p-3"
+                  className="bg-gray-100 focus:bg-[#E4ECF9] outline-none border border-gray-200 rounded-xl p-3"
+                />
+              </label>
+              <label className="ml-auto flex gap-2">
+                <span className="text-sm text-gray-700">사장님 회원이에요</span>
+                <input
+                  type="checkbox"
+                  {...register("sajangnim")}
+                  defaultChecked={defaultValues.sajangnim}
+                  className="w-5 h-5 rounded bg-gray-100 border border-gray-200"
                 />
               </label>
             </fieldset>

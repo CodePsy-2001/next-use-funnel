@@ -12,6 +12,7 @@ export { StartStep, AvailabilityStep };
 export type FunnelState = {
   name: string;
   phone: string;
+  sajangnim: boolean;
 };
 
 export default function ExampleFunnel() {
@@ -28,8 +29,9 @@ export default function ExampleFunnel() {
       <Funnel.Step name="form">
         <FormStep
           defaultValues={state}
-          next={async ({ phone, name }) => {
-            if (state.phone !== phone || state.name !== name) await submit({ phone, name });
+          next={async ({ phone, name, sajangnim }) => {
+            if (state.phone !== phone || state.name !== name || state.sajangnim !== sajangnim)
+              await submit({ phone, name, sajangnim });
             return setState((prev) => ({ ...prev, phone, name, step: "availability" }));
           }}
           pass={() => setState((prev) => ({ ...prev, step: "availability" }))}

@@ -10,9 +10,9 @@ export const submit = async (state: FormValues) => {
   if (!sid) throw new Error("Session ID not found");
 
   await sql`
-    INSERT INTO contacts (sid, name, phone)
-    VALUES (${sid.value}, ${state.name}, ${formatPhoneNumber(state.phone)})
+    INSERT INTO contacts (sid, name, phone, sajangnim)
+    VALUES (${sid.value}, ${state.name}, ${formatPhoneNumber(state.phone)}, ${state.sajangnim})
     ON CONFLICT (sid)
-    DO UPDATE SET name = ${state.name}, phone = ${formatPhoneNumber(state.phone)}
+    DO UPDATE SET name = ${state.name}, phone = ${formatPhoneNumber(state.phone)}, sajangnim = ${state.sajangnim}
   `;
 };

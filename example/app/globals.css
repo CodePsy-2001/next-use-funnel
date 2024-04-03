@@ -15,7 +15,7 @@
     }
 
     body {
-        @apply bg-white text-gray-900 lining-nums tablet:max-w-[375px] m-auto;
+        @apply bg-white text-gray-900 accent-blue-500 lining-nums tablet:max-w-[375px] m-auto;
     }
 }
 
