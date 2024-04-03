@@ -63,7 +63,7 @@ export function FormStep({
                 />
               </label>
               <label className="ml-auto flex gap-2">
-                <span className="text-sm text-gray-700">사장님 회원이에요</span>
+                <span className="text-sm text-gray-700">사장님이에요</span>
                 <input
                   type="checkbox"
                   {...register("sajangnim")}
